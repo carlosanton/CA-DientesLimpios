@@ -7,15 +7,17 @@ namespace DientesLimpios.Pruebas.Dominio.ObjetosDeValor
     public class EmailTests
     {
         [TestMethod]
-        public void Constructor_EmailNulo_LanzExcepcion()
+        [ExpectedException(typeof(ExcepcionDeReglaDeNegocio))]
+        public void Constructor_EmailNulo_LanzaExcepcion()
         {
-            Assert.Throws<ExcepcionDeReglaDeNegocio>(() => new Email(null!));
+            new Email(null!);
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ExcepcionDeReglaDeNegocio))]
         public void Constructor_EmailSinArroba_LanzaExcepcion()
         {
-            Assert.Throws<ExcepcionDeReglaDeNegocio>(() => new Email("carlos.com"));
+            new Email("carlos.com");
         }
 
         [TestMethod]

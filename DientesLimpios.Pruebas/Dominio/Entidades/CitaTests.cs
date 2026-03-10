@@ -28,10 +28,11 @@ namespace DientesLimpios.Pruebas.Dominio.Entidades
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ExcepcionDeReglaDeNegocio))]
         public void Constructor_FechaInicioEnElPasado_LanzaExcepcion()
         {
             var intervalo = new IntervaloDeTiempo(DateTime.UtcNow.AddDays(-1), DateTime.UtcNow);
-            Assert.Throws<ExcepcionDeReglaDeNegocio>(() => new Cita(_pacienteId, _dentistaId, _consultorioId, intervalo));
+            var cita = new Cita(_pacienteId, _dentistaId, _consultorioId, intervalo);
         }
 
         [TestMethod]
@@ -43,11 +44,12 @@ namespace DientesLimpios.Pruebas.Dominio.Entidades
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ExcepcionDeReglaDeNegocio))]
         public void Cancelar_CitaNoProgramada_LanzaExcepcion()
         {
             var cita = new Cita(_pacienteId, _dentistaId, _consultorioId, _intervalo);
             cita.Cancelar();
-            Assert.Throws<ExcepcionDeReglaDeNegocio>(() => cita.Cancelar());
+            cita.Cancelar();
         }
 
         [TestMethod]
@@ -59,11 +61,12 @@ namespace DientesLimpios.Pruebas.Dominio.Entidades
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ExcepcionDeReglaDeNegocio))]
         public void Completar_CitaCancelada_LanzaExcepcion()
         {
             var cita = new Cita(_pacienteId, _dentistaId, _consultorioId, _intervalo);
             cita.Cancelar();
-            Assert.Throws<ExcepcionDeReglaDeNegocio>(() => cita.Completar());
+            cita.Completar();
         }
     }
 }

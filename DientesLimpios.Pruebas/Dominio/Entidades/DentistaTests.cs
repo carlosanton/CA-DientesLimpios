@@ -8,18 +8,19 @@ namespace DientesLimpios.Pruebas.Dominio.Entidades
     public class DentistaTests
     {
         [TestMethod]
+        [ExpectedException(typeof(ExcepcionDeReglaDeNegocio))]
         public void Constructor_NombreNulo_LanzaExcepcion()
         {
             var email = new Email("felipe@ejemplo.com");
-            Assert.Throws<ExcepcionDeReglaDeNegocio>(() => new Dentista(null!, email));
-
+            new Dentista(null!, email);
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ExcepcionDeReglaDeNegocio))]
         public void Constructor_EmailNulo_LanzaExcepcion()
         {
             Email email = null!;
-            Assert.Throws<ExcepcionDeReglaDeNegocio>(() => new Dentista("Felipe", email));
+            new Dentista("Felipe", email);
         }
     }
 }
