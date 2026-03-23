@@ -10,8 +10,10 @@ namespace DientesLimpios.Pruebas.Aplicacion.CasosDeUso.Consultorios
     [TestClass]
     public class CasoDeUsoObtenerDetalleConsultorioTests
     {
+#pragma warning disable CS8618 // Un campo que no acepta valores NULL debe contener un valor distinto de NULL al salir del constructor. Considere la posibilidad de agregar el modificador "required" o declararlo como un valor que acepta valores NULL.
         private IRepositorioConsultorios _repositorio;
         private CasoDeUsoObtenerDetalleConsultorio _casoDeUso;
+#pragma warning restore CS8618 // Un campo que no acepta valores NULL debe contener un valor distinto de NULL al salir del constructor. Considere la posibilidad de agregar el modificador "required" o declararlo como un valor que acepta valores NULL.
 
         [TestInitialize]
         public void Setup()

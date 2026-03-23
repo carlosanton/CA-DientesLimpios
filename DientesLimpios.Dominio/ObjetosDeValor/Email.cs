@@ -6,6 +6,9 @@ namespace DientesLimpios.Dominio.ObjetosDeValor
     {
         public string Valor { get; }
 
+        private Email()
+        {}
+
         public Email(string email)
         {
             if (email is null)

@@ -1,10 +1,7 @@
 ﻿using DientesLimpios.Aplicacion.CasosDeUso.Consultorios.Comandos.CrearConsultorio;
 using DientesLimpios.Aplicacion.Contratos.Persistencia;
 using DientesLimpios.Aplicacion.Contratos.Repositorios;
-using DientesLimpios.Aplicacion.Excepciones;
 using DientesLimpios.Dominio.Entidades;
-using FluentValidation;
-using FluentValidation.Results;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 
@@ -13,9 +10,11 @@ namespace DientesLimpios.Pruebas.Aplicacion.CasosDeUso.Consultorios
     [TestClass]
     public class CasoDeUsoCrearConsultorioTests
     {
+#pragma warning disable CS8618 // Un campo que no acepta valores NULL debe contener un valor distinto de NULL al salir del constructor. Considere la posibilidad de agregar el modificador "required" o declararlo como un valor que acepta valores NULL.
         private IRepositorioConsultorios _repositorio;
         private IUnidadDeTrabajo _unidadDeTrabajo;
         private CasoDeUsoCrearConsultorio _casoDeUso;
+#pragma warning restore CS8618 // Un campo que no acepta valores NULL debe contener un valor distinto de NULL al salir del constructor. Considere la posibilidad de agregar el modificador "required" o declararlo como un valor que acepta valores NULL.
 
         [TestInitialize]
         public void Setup()

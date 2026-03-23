@@ -16,6 +16,11 @@ namespace DientesLimpios.Dominio.Entidades
         public Dentista? Dentista { get; private set; }
         public Consultorio? Consultorio { get; private set; }
 
+        private Cita()
+        {
+            
+        }
+
         public Cita(Guid pacienteId, Guid dentistaId, Guid consultorioId, IntervaloDeTiempo intervaloDeTiempo)
         {
             if (intervaloDeTiempo.Inicio < DateTime.UtcNow)
