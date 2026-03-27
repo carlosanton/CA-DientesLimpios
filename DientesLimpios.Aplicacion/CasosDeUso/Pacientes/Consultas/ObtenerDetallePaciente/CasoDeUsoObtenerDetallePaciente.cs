@@ -1,0 +1,28 @@
+﻿using DientesLimpios.Aplicacion.Contratos.Repositorios;
+using DientesLimpios.Aplicacion.Excepciones;
+using DientesLimpios.Aplicacion.Utilidades.Mediador;
+
+namespace DientesLimpios.Aplicacion.CasosDeUso.Pacientes.Consultas.ObtenerDetallePaciente
+{
+    public class CasoDeUsoObtenerDetallePaciente : IRequestHandler<ConsultaObtenerDetallePaciente, PacienteDetalleDTO>
+    {
+        private readonly IRepositorioPacientes _repositorio;
+
+        public CasoDeUsoObtenerDetallePaciente(IRepositorioPacientes repositorio)
+        {
+            _repositorio = repositorio;
+        }
+
+        public async Task<PacienteDetalleDTO> Handle(ConsultaObtenerDetallePaciente request)
+        {
+            var paciente = await _repositorio.ObtenerPorId(request.Id);
+
+            if (paciente is null)
+            {
+                throw new ExcepcionNoEncontrado();
+            }
+
+            return paciente.ADto();
+        }
+    }
+}
